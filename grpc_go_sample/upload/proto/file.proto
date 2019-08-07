@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package file;
+
+message FileRequestName {
+    string name = 1;
+}
+
+message FileRequest {
+    bytes data = 2 ;
+}
+
+message FileResponse {
+    int64 size = 1;
+}
+
+service FileService {
+    rpc Upload(FileRequestName, stream FileRequest) returns (FileResponse);
+}
